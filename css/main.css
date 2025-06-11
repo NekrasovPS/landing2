@@ -2371,6 +2371,17 @@ body.lock {
   .footer .feedback-content {
     padding: 30px;
   }
+
+  .repair,
+  .promotion,
+  .about,
+  .services,
+  .reviews,
+  .form,
+  .advantages,
+  .sert {
+    padding: 30px 0;
+  }
 }
 
 @media (max-width: 575.98px) {
