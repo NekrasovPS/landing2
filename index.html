@@ -22,25 +22,25 @@
     <header class="header">
   <div class="container">
     <div class="header__wrapper">
-      <div class="header__top ">
-        <div class="phone">
-          <div class="phone__item">
-            <img src="img/header/local_phone.png" alt="" />
-            <a href="+74994330728">+7 (499) 433-07-28</a>
-          </div>
-          <div class="phone__item">
-            <img src="img/header/local_phone.png" alt="" />
-            <a href="+74951912074">+7 (495) 191-20-74</a>
-          </div>
-        </div>
-        <div class="address">
-          <div class="address__item">
+      <div class="header__top">
+        <div class="block-item">
+          <div class="block-item__item">
             <img src="img/header/place.png" alt="" />
             <p>ул. Ибрагимова 31 ас4</p>
           </div>
-          <div class="address__item">
+          <div class="block-item__item">
+            <img src="img/header/local_phone.png" alt="" />
+            <a href="+74994330728">+7 (499) 433-07-28</a>
+          </div>
+        </div>
+        <div class="block-item">
+          <div class="block-item__item">
             <img src="img/header/place.png" alt="" />
             <p>1-й Силикатный проезд, 19/2с26</p>
+          </div>
+          <div class="block-item__item">
+            <img src="img/header/local_phone.png" alt="" />
+            <a href="+74951912074">+7 (495) 191-20-74</a>
           </div>
         </div>
         <div class="time">
@@ -49,12 +49,19 @@
             <p>09:00-21:00</p>
           </div>
         </div>
+        <div class="feedback">
+          <button class="open-form-btn">Получить консультацию</button>
+        </div>
         <div class="burger">
-          <button class="menu-open"><img src="img/header/menu.svg" alt="" /></button>
+          <button class="menu-open">
+            <img src="img/header/menu.svg" alt="" />
+          </button>
         </div>
         <div class="menu">
           <div class="menu__close">
-            <button class="menu-close"><img src="img/header/close.svg" alt="" /></button>
+            <button class="menu-close">
+              <img src="img/header/close.svg" alt="" />
+            </button>
           </div>
           <ul class="menu__list">
             <li><a href="#">О компании</a></li>
@@ -72,8 +79,16 @@
               <p>ул. Ибрагимова 31 ас4</p>
             </div>
             <div class="menu__address-item">
+              <img src="img/header/local_phone.png" alt="" />
+              <a href="+74994330728">+7 (499) 433-07-28</a>
+            </div>
+            <div class="menu__address-item">
               <img src="img/header/place.png" alt="" />
               <p>1-й Силикатный проезд, 19/2с26</p>
+            </div>
+            <div class="menu__address-item">
+              <img src="img/header/local_phone.png" alt="" />
+              <a href="+74951912074">+7 (495) 191-20-74</a>
             </div>
           </div>
           <div class="menu__time">
@@ -87,7 +102,7 @@
       <div class="header__bottom">
         <nav class="header__nav">
           <ul class="header__list">
-            <li><a href="#">О компании</a></li>
+            <li><a href="#about">О компании</a></li>
             <li><a href="#">Услуги</a></li>
             <li><a href="#">Корпоративным клиентам</a></li>
             <li><a href="#">Отзывы</a></li>
@@ -125,16 +140,16 @@
       </section>
 
       <section>
-        <div class="repair fade-in-up">
+        <div class="repair">
           <div class="container">
             <div class="repair__wrapper">
-              <div class="title">
+              <div class="title fade-in-left">
                 <h2>
                   Ремонт и обслуживание <br />
                   любых моделей VAG Group
                 </h2>
               </div>
-              <div class="repair__items">
+              <div class="repair__items fade-in-up">
                 <div class="repair__item">
                   <div class="repair__img">
                     <svg
@@ -415,14 +430,14 @@
       </section>
 
       <section>
-        <div class="promotion fade-in-up">
+        <div class="promotion">
           <div class="container">
             <div class="promotion__wrapper">
               <div class="swiper promotionSwiper">
-                <div class="title">
+                <div class="title fade-in-left">
                   <h2>наши акции</h2>
                 </div>
-                <div class="swiper-wrapper">
+                <div class="swiper-wrapper fade-in-up">
                   <div class="swiper-slide">
                     <div class="promotion__item" id="item1">
                       <div class="promotion__text">
@@ -556,13 +571,13 @@
       </section>
 
       <section>
-        <div class="about fade-in-up">
+        <div class="about" id="about">
           <div class="container">
             <div class="about__wrapper">
-              <div class="title">
+              <div class="title fade-in-left">
                 <h2>о компании</h2>
               </div>
-              <div class="about__items">
+              <div class="about__items fade-in-up">
                 <div class="about__item">
                   <img src="img/about/about-icon.svg" alt="" />
                   <h2>
@@ -608,7 +623,7 @@
                   </p>
                 </div>
               </div>
-              <div class="about__slider">
+              <div class="about__slider fade-in-up">
                 <div class="swiper aboutSwiper">
                   <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -632,7 +647,7 @@
                   </div>
                 </div>
               </div>
-              <div class="about__sale">
+              <div class="about__sale fade-in-up">
                 <img src="img/promo.png" alt="" />
                 <p>20% Скидки на запчасти VAG Group</p>
                 <img src="img/promo.png" alt="" />
@@ -643,14 +658,14 @@
       </section>
 
       <section>
-        <div class="services fade-in-up">
+        <div class="services">
           <div class="container">
             <div class="services__wrapper">
-              <div class="title">
+              <div class="title fade-in-left">
                 <h2>Услуги и цены Сервиса Volkswagen в Москве</h2>
               </div>
 
-              <ul class="accordion">
+              <ul class="accordion fade-in-up">
                 <li class="accordion__item accordion__item--active">
                   <button class="accordion__header">
                     <span
@@ -2614,13 +2629,13 @@
       </section>
 
       <section>
-        <div class="reviews fade-in-up">
+        <div class="reviews">
           <div class="container">
             <div class="reviews__wrapper">
-              <div class="title">
+              <div class="title fade-in-left">
                 <h2>Независимые отзывы</h2>
               </div>
-              <div class="reviews__items">
+              <div class="reviews__items fade-in-up">
                 <div class="reviews__item">
                   <div class="reviews__top">
                     <p>4.8</p>
@@ -2818,15 +2833,15 @@
       </section>
 
       <section>
-        <div class="sert fade-in-up">
+        <div class="sert">
           <div class="container">
             <div class="sert__wrapper">
               <div class="sert__slider">
                 <div class="swiper sertSwiper">
-                  <div class="title">
+                  <div class="title fade-in-left">
                     <h2>сертификаты</h2>
                   </div>
-                  <div class="swiper-wrapper">
+                  <div class="swiper-wrapper fade-in-up">
                     <div class="swiper-slide">
                       <img src="img/sert/sert-1.png" alt="" loading="lazy" />
                     </div>
@@ -2869,24 +2884,24 @@
         ></iframe>
       </div>
       <div class="footer__center">
-        <div class="phone">
-          <div class="phone__item">
-            <img src="img/header/local_phone.png" alt="" />
-            <a href="+74994330728">+7 (499) 433-07-28</a>
-          </div>
-          <div class="phone__item">
-            <img src="img/header/local_phone.png" alt="" />
-            <a href="+74951912074">+7 (495) 191-20-74</a>
-          </div>
-        </div>
-        <div class="address">
-          <div class="address__item">
+        <div class="block-item">
+          <div class="block-item__item">
             <img src="img/header/place.png" alt="" />
             <p>ул. Ибрагимова 31 ас4</p>
           </div>
-          <div class="address__item">
+          <div class="block-item__item">
+            <img src="img/header/local_phone.png" alt="" />
+            <a href="+74994330728">+7 (499) 433-07-28</a>
+          </div>
+        </div>
+        <div class="block-item">
+          <div class="block-item__item">
             <img src="img/header/place.png" alt="" />
             <p>1-й Силикатный проезд, 19/2с26</p>
+          </div>
+          <div class="block-item__item">
+            <img src="img/header/local_phone.png" alt="" />
+            <a href="+74951912074">+7 (495) 191-20-74</a>
           </div>
         </div>
         <div class="time">
