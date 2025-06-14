@@ -4,16 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const modal = document.querySelector(".feedback-modal");
   const modalTitle = document.querySelector("#modal-title");
   const header = document.querySelector(".header");
-  const menuButton = document.querySelector(".menu-open");
-  const closeButton = document.querySelector(".menu-close");
   const menu = document.querySelector(".menu");
 
-  menuButton?.addEventListener("click", () => {
+  document.querySelector(".menu-open")?.addEventListener("click", () => {
     menu?.classList.toggle("open");
     body.classList.toggle("lock");
   });
 
-  closeButton?.addEventListener("click", () => {
+  document.querySelector(".menu-close")?.addEventListener("click", () => {
     menu?.classList.remove("open");
     body.classList.remove("lock");
   });
@@ -33,8 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.querySelectorAll(".accordion__item").forEach((item) => {
-    const header = item.querySelector(".accordion__header");
-    header?.addEventListener("click", () => {
+    item.querySelector(".accordion__header")?.addEventListener("click", () => {
       document.querySelectorAll(".accordion__item").forEach((i) => {
         if (i !== item) i.classList.remove("accordion__item--active");
       });
@@ -42,29 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  setTimeout(() => {
-    document.querySelector(".main__title")?.classList.add("animate");
-  }, 500);
-
-  setTimeout(() => {
-    document.querySelector(".main__btns")?.classList.add("animate");
-  }, 1000);
-
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          obs.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
-
-  document
-    .querySelectorAll(".fade-in-up")
-    .forEach((el) => observer.observe(el));
+  setTimeout(() => document.querySelector(".main__title")?.classList.add("animate"), 500);
+  setTimeout(() => document.querySelector(".main__btns")?.classList.add("animate"), 1000);
 
   if (window.jQuery) $(".phone").mask("+7(999) 999-99-99");
 
@@ -73,9 +49,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// === СЛАЙДЕРЫ Swiper ===
-let promotionSwiper;
-let repairSwiper;
+// === АНИМАЦИЯ ПО СКРОЛЛУ ===
+function animateOnScroll() {
+  document.querySelectorAll(".fade-in-up, .fade-in-left").forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.9 && !el.classList.contains("visible")) {
+      el.classList.add("visible");
+    }
+  });
+}
+
+["scroll", "load", "resize"].forEach((event) => window.addEventListener(event, animateOnScroll));
+
+// === СЛАЙДЕРЫ SWIPER ===
+let promotionSwiper, repairSwiper;
 
 function initRepairSwiper() {
   return new Swiper(".repair-slider", {
@@ -106,6 +93,21 @@ function initPromotionSwiper() {
   });
 }
 
+function restructureSlides(wrapper, originalHTML) {
+  const items = [...wrapper.querySelectorAll(".promotion__item")];
+  wrapper.innerHTML = "";
+  items.forEach((item) => {
+    const slide = document.createElement("div");
+    slide.className = "swiper-slide";
+    slide.appendChild(item.cloneNode(true));
+    wrapper.appendChild(slide);
+  });
+}
+
+function restoreSlides(wrapper, originalHTML) {
+  wrapper.innerHTML = originalHTML;
+}
+
 function lazySwiperInit(selector, callback) {
   const target = document.querySelector(selector);
   if (!target) return;
@@ -118,38 +120,19 @@ function lazySwiperInit(selector, callback) {
   obs.observe(target);
 }
 
-function restructureSlidesForMobile(wrapper, originalHTML) {
-  const items = Array.from(wrapper.querySelectorAll(".promotion__item"));
-  wrapper.innerHTML = "";
-  items.forEach((item) => {
-    const slide = document.createElement("div");
-    slide.className = "swiper-slide";
-    slide.appendChild(item.cloneNode(true));
-    wrapper.appendChild(slide);
-  });
-}
-
-function restoreOriginalSlides(wrapper, originalHTML) {
-  wrapper.innerHTML = originalHTML;
-}
-
-window.addEventListener("DOMContentLoaded", () => {
-  const promotionWrapper = document.querySelector(
-    ".promotionSwiper .swiper-wrapper"
-  );
+document.addEventListener("DOMContentLoaded", () => {
+  const promotionWrapper = document.querySelector(".promotionSwiper .swiper-wrapper");
   const originalHTML = promotionWrapper?.innerHTML;
 
   repairSwiper = initRepairSwiper();
 
-  function handleResize() {
+  const handleResize = () => {
     if (!promotionWrapper) return;
-    if (window.innerWidth <= 991) {
-      restructureSlidesForMobile(promotionWrapper, originalHTML);
-    } else {
-      restoreOriginalSlides(promotionWrapper, originalHTML);
-    }
+    window.innerWidth <= 991
+      ? restructureSlides(promotionWrapper, originalHTML)
+      : restoreSlides(promotionWrapper, originalHTML);
     initPromotionSwiper();
-  }
+  };
 
   let resizeTimeout;
   window.addEventListener("resize", () => {
@@ -164,11 +147,11 @@ window.addEventListener("DOMContentLoaded", () => {
       slidesPerView: 3,
       spaceBetween: 16,
       breakpoints: {
-        1400: { slidesPerView: 3, spaceBetween: 16 },
-        991: { slidesPerView: 2, spaceBetween: 16 },
-        768: { slidesPerView: 2, spaceBetween: 16 },
-        375: { slidesPerView: 1, spaceBetween: 16 },
-        320: { slidesPerView: 1, spaceBetween: 16 },
+        1400: { slidesPerView: 3 },
+        991: { slidesPerView: 2 },
+        768: { slidesPerView: 2 },
+        375: { slidesPerView: 1 },
+        320: { slidesPerView: 1 },
       },
     });
   });
@@ -192,17 +175,3 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
-const observer = new IntersectionObserver((entries, obs) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      obs.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
-
-document.querySelectorAll(".fade-in-up, .fade-in-left").forEach(el => {
-  observer.observe(el);
-});
-

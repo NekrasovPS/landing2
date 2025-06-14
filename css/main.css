@@ -1875,12 +1875,11 @@ body.lock {
   border-radius: 4px;
 }
 
-.fade-in-up,
-.fade-in-left {
+.fade-in-up {
   opacity: 0;
-  -webkit-transform: translateY(20px);
-      -ms-transform: translateY(20px);
-          transform: translateY(20px);
+  -webkit-transform: translateY(100px);
+      -ms-transform: translateY(100px);
+          transform: translateY(100px);
   -webkit-transition: opacity 0.6s ease, -webkit-transform 0.6s ease;
   transition: opacity 0.6s ease, -webkit-transform 0.6s ease;
   transition: opacity 0.6s ease, transform 0.6s ease;
@@ -1888,24 +1887,30 @@ body.lock {
   will-change: opacity, transform;
 }
 
-.fade-in-up.visible,
-.fade-in-left.visible {
+.fade-in-up.visible {
   opacity: 1;
-  -webkit-transform: none;
-      -ms-transform: none;
-          transform: none;
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
 }
 
 .fade-in-left {
+  opacity: 0;
   -webkit-transform: translateX(-400px);
       -ms-transform: translateX(-400px);
           transform: translateX(-400px);
+  -webkit-transition: opacity 0.6s ease, -webkit-transform 0.6s ease;
+  transition: opacity 0.6s ease, -webkit-transform 0.6s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease, -webkit-transform 0.6s ease;
+  will-change: opacity, transform;
 }
 
-.fade-in-up {
-  -webkit-transform: translateY(100px);
-      -ms-transform: translateY(100px);
-          transform: translateY(100px);
+.fade-in-left.visible {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+          transform: translateX(0);
 }
 
 @media (max-width: 1399.98px) {
@@ -2056,6 +2061,12 @@ body.lock {
   .main__btns button:nth-child(2),
   .main__btns button:nth-child(3) {
     display: none;
+  }
+
+  .main__btns {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 
   .main {
@@ -2386,6 +2397,7 @@ body.lock {
   .advantages,
   .sert {
     padding: 30px 0;
+    margin: 0;
   }
 }
 
@@ -2410,6 +2422,11 @@ body.lock {
 
   .main__wrapper {
     padding-top: 131px;
+  }
+
+  .main__wrapper {
+    height: 600px;
+    padding-top: 100px;
   }
 
   .main__title {
@@ -2452,6 +2469,35 @@ body.lock {
   }
 
   .repair__img svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 490px) {
+  .header__top .block-item__item a {
+    font-size: 11px;
+  }
+
+  .header__top .feedback button {
+    border: 1px solid #fff;
+    background-color: rgba(255, 255, 255, 0);
+    color: #fff;
+    padding: 7px;
+    font-size: 11px;
+  }
+
+  .burger {
+    width: 25px;
+    height: 25px;
+  }
+
+  .burger button {
+    width: 100%;
+    height: 100%;
+  }
+
+  .burger button img {
     width: 100%;
     height: 100%;
   }
